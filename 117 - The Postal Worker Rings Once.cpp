@@ -6,11 +6,6 @@ using namespace std;
 #define N 30 // limit is english alphabet
 #define INF 1000000
 
-struct edge{
-	int to,w;
-	edge(int _to, int _w): to(_to), w(_w){}
-};
-
 int main(){
 	string s;
 	while (cin >> s){
