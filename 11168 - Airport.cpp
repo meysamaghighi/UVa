@@ -1,5 +1,5 @@
 // Meysam Aghighi
-// The final answer is an edge of the convex hull, so check them all O(nlogn)
+// The final answer is an edge of the convex hull, so check them all O(nlogn) + O(n^2) worst case, to check sum of distances from each airport candidate
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -33,7 +33,7 @@ double dist_point_line(point p, point a, point b){ // dist from point p to line 
     return dist(p , a + (b-a)*k/dist(a,b));
 }
 
-double solve(const vector<point> &p, point a, point b){ // gives sum of dist from points in p to line a-b
+double solve(vector<point> &p, point a, point b){ // gives sum of dist from points in p to line a-b
     double ans = 0.0;
     int n = p.size();
     for (int i=0;i<n;i++) ans += dist_point_line(p[i],a,b);
@@ -41,7 +41,7 @@ double solve(const vector<point> &p, point a, point b){ // gives sum of dist fro
     return ans;
 }
 
-vector<point> convex_hull(vector<point> p){
+vector<point> convex_hull(vector<point> &p){
     int n = p.size() , k = 0;
     vector<point> h(2*n);
     sort(p.begin(),p.end());
